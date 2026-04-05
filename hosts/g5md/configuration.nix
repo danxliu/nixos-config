@@ -23,6 +23,7 @@
   services.desktopManager.gnome.enable = true;
   services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
+  services.gnome.gnome-browser-connector.enable = true;
 
   services.pipewire = {
     enable = true;
