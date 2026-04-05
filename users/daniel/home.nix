@@ -87,6 +87,7 @@
   home.packages = with pkgs; [
     alacritty
     gemini-cli-bin
+    vesktop
     ripgrep
     tree
   ];
