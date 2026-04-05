@@ -23,4 +23,21 @@
       pull.rebase = true;
     };
   };
+
+  programs.firefox = {
+    enable = true;
+  };
+
+  programs.vscode = {
+    enable = true;
+  };
+  programs.htop = {
+    enable = true;
+  };
+
+  home.packages = with pkgs; [
+    alacritty
+    ripgrep
+    tree
+  ];
 }

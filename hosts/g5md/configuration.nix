@@ -4,8 +4,10 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/core/default.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -32,19 +34,18 @@
   users.users.daniel = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      tree
-    ];
+  };
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
   };
 
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
-    alacritty
-    gemini-cli-bin
-    neovim
     git
-    vim
     wget
   ];
 

@@ -7,22 +7,35 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-      g5md = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-	specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-	  home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.daniel = import ./home.nix;
-          }
-        ];
-      };
-    };
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      getSubDirs = dir: builtins.attrNames (nixpkgs.lib.filterAttrs (name: type: type == "directory") (builtins.readDir dir));
 
-  };
+      hosts = getSubDirs ./hosts;
+      users = getSubDirs ./users;
+
+      userConfigs = builtins.listToAttrs (map (user: {
+        name = user;
+        value = import ./users/${user}/home.nix;
+      }) users);
+
+      nixosConfigurations = builtins.listToAttrs (map (host: {
+        name = host;
+        value = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/${host}/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users = userConfigs;
+            }
+          ];
+        };
+      }) hosts);
+    in {
+      inherit nixosConfigurations;
+    };
 }
