@@ -5,7 +5,6 @@
   ...
 }:
 let
-  gtkTheme = "adw-gtk3";
   iconTheme = "Papirus";
   cursorTheme = "Quintom_Ink";
 in
@@ -280,6 +279,36 @@ in
     tree
   ];
 
+  systemd.user.services.themeSync = {
+    Unit = {
+      Description = "Sync GTK3 theme";
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart =
+        let
+          themeSyncScript = pkgs.writeShellScript "theme-sync.sh" ''
+            set_theme() {
+              CURRENT_THEME=$(${pkgs.glib}/bin/gsettings get org.gnome.desktop.interface color-scheme)
+              if [ "$CURRENT_THEME" = "'prefer-dark'" ]; then
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme \'adw-gtk3-dark\'
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme \'prefer-dark\'
+              else
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme \'adw-gtk3\'
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme \'default\'
+              fi
+            }
+            set_theme
+            ${pkgs.dconf}/bin/dconf watch /org/gnome/desktop/interface/color-scheme | while read -r _; do
+              set_theme
+            done
+          '';
+        in
+        "${themeSyncScript}";
+      Restart = "on-failure";
+    };
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -294,15 +323,8 @@ in
   gtk = {
     enable = true;
     cursorTheme.name = cursorTheme;
-    theme.name = gtkTheme;
     iconTheme.name = iconTheme;
     gtk4.theme = config.gtk.theme;
   };
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-      "org/gnome/desktop/interface".gtk-theme = lib.mkForce "adw-gtk3-dark";
-    };
-  };
+  dconf.enable = true;
 }

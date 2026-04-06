@@ -84,6 +84,9 @@
   programs.nix-index-database.comma.enable = true;
 
   environment.systemPackages = with pkgs; [
+    gtk3
+    gtk3.dev
+
     # Themes
     adwaita-icon-theme
     hicolor-icon-theme
