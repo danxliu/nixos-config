@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   gtkTheme = "adw-gtk3";
   iconTheme = "Papirus";
@@ -59,6 +59,21 @@ in {
       isDefault = true;
       settings = {
         "browser.startup.homepage" = "https://danxliu.com/startpage";
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.startup.page" = 3;
+        "browser.sessionstore.resume_from_crash" = true;
+        "browser.ctrlTab.sortByRecentlyUsed" = true;
+        "browser.ctrlTab.previews" = true;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+        "browser.urlbar.groupLabels.enabled" = false;
+        "browser.urlbar.quicksuggest.enabled" = false;
+        "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.socialtracking.enabled" = true;
+        "browser.urlbar.suggest.recentsearches" = false;
+        "dom.battery.enabled" = false;
       };
       search.engines = {
         nix-packages = {
@@ -78,7 +93,7 @@ in {
         nixos-wiki = {
           name = "NixOS Wiki";
           urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
-          iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+          icon = "https://wiki.nixos.org/favicon.ico";
           definedAliases = [ "@nw" ];
         };
       };
@@ -100,23 +115,6 @@ in {
         ublock-origin
         youtube-shorts-block
       ];
-      settings = {
-        "sidebar.revamp" = true;
-        "sidebar.verticalTabs" = true;
-        "browser.toolbars.bookmarks.visibility" = "never";
-        "browser.startup.page" = 3;
-        "browser.sessionstore.resume_from_crash" = true;
-        "browser.ctrlTab.sortByRecentlyUsed" = true;
-        "browser.ctrlTab.previews" = true;
-        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-        "browser.urlbar.groupLabels.enabled" = false;
-        "browser.urlbar.quicksuggest.enabled" = false;
-        "privacy.trackingprotection.enabled" = true;
-        "privacy.trackingprotection.socialtracking.enabled" = true;
-        "browser.urlbar.suggest.recentsearches" = false;
-        "dom.battery.enabled" = false;
-      };
     };
   };
   programs.vscode = {
@@ -130,6 +128,8 @@ in {
         ms-python.python
         vscjava.vscode-java-pack
         bbenoist.nix
+        Google.gemini-cli-vscode-ide-companion
+        ms-toolsai.jupyter
       ];
       userSettings = builtins.fromJSON (builtins.readFile ./vscode-settings.json);
     };
@@ -257,7 +257,7 @@ in {
     gnomeExtensions.appindicator
     
     gemini-cli
-    copilot-cli
+    github-copilot-cli
     ripgrep
     tree
   ];
@@ -279,5 +279,12 @@ in {
     theme.name = gtkTheme;
     iconTheme.name = iconTheme;
     gtk4.theme = config.gtk.theme;
+  };
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+      "org/gnome/desktop/interface".gtk-theme = lib.mkForce "adw-gtk3-dark";
+    };
   };
 }

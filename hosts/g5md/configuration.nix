@@ -54,6 +54,7 @@
     pulse.enable = true;
   };
   services.libinput.enable = true;
+  services.tailscale.enable = true;
 
   users.users.daniel = {
     isNormalUser = true;
@@ -100,4 +101,3 @@
   system.stateVersion = "25.11";
 
 }
-
