@@ -9,5 +9,6 @@
     "editor.lineHeight": 1.8,
     "editor.minimap.renderCharacters": false,
     "window.menuStyle": "native",
-    "window.titleBarStyle": "native"
+    "window.titleBarStyle": "native",
+    "git.autofetch": true
 }
