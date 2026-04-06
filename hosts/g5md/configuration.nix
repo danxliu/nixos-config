@@ -34,9 +34,7 @@
         enableOffloadCmd = true;
       };
       
-      # Replace these with the IDs from the lspci command!
-      # If lspci said 00:02.0, use PCI:0:2:0
-      intelBusId = "PCI:0:2:0";   # Change this to "amdgpuBusId" if you have a Ryzen CPU
+      intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
@@ -90,6 +88,7 @@
 
     git
     wget
+    devenv
   ];
   environment.variables = {
     GBM_BACKEND = "nvidia-drm";
