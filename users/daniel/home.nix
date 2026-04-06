@@ -142,13 +142,14 @@ in {
 
     # Gnome extensions
     gnome-extension-manager
+    gnome-tweaks
     gnomeExtensions.just-perfection
     gnomeExtensions.dash-to-dock
     gnomeExtensions.media-controls
     gnomeExtensions.caffeine
     gnomeExtensions.user-themes
-    gnomeExtensions.adw-gtk3-colorizer
-    gnomeExtensions.legacy-gtk3-theme-scheme-auto-switcher
+    gnomeExtensions.gsconnect
+    gnomeExtensions.appindicator
     
     ripgrep
     tree
