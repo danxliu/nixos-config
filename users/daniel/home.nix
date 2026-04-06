@@ -128,11 +128,86 @@ in {
       userSettings = builtins.fromJSON (builtins.readFile ./vscode-settings.json);
     };
   };
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    baseIndex = 1;
+    shortcut = "Space";
+    shell = "${pkgs.fish}/bin/fish";
+
+    extraConfig = ''
+      # Options
+      set-option -g allow-rename off
+
+      # Status Bar
+      set -g status-position bottom
+      set -g status-justify left
+      set -g status-style 'fg=blue'
+      setw -g mode-style 'fg=black bg=color15'
+      set -g status-right-style 'fg=black bg=color15'
+      set -g status-right ' %Y-%m-%d %H:%M %p '
+      setw -g window-status-current-style 'fg=black bg=color15'
+      setw -g window-status-current-format ' #I #W '
+      set -g message-style 'fg=black bg=red bold'
+
+      # Mappings
+      # Note: Home Manager places the config in ~/.config/tmux/tmux.conf
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
+      
+      bind h select-pane -L
+      bind l select-pane -R
+      bind k select-pane -U
+      bind j select-pane -D
+      
+      bind C-h resize-pane -L 10
+      bind C-l resize-pane -R 10
+      bind C-k resize-pane -U 10
+      bind C-j resize-pane -D 10
+      
+      bind Tab next-window
+      bind BTab previous-window
+      bind t new-window
+    '';
+  };
   programs.htop = {
     enable = true;
   };
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set -g fish_greeting ""
+      set -g fish_key_bindings fish_vi_key_bindings
+      
+      function fish_prompt
+        set_color black -b brwhite
+        echo -n " 󰘧 "
+        set_color normal
+        echo -n " "
+        # Note: Added a space before the parenthesis here for proper fish syntax
+        printf '%s' (prompt_pwd --full-length-dirs 2)
+        echo -n " "
+      end
+
+      function fish_right_prompt
+        set -l git_status (fish_git_prompt)
+        set -l duration "$CMD_DURATION"
+
+        if test -n "$git_status"
+          echo -n "$git_status "
+        end
+
+        if test -n "$duration"
+          set_color black -b brwhite
+          echo -n " $duration"
+          echo -n "ms "
+        end
+        set_color normal
+      end
+
+      function fish_mode_prompt
+        commandline -f repaint
+      end
+    '';
   };
   programs.alacritty = {
     enable = true;

@@ -6,5 +6,6 @@
     "editor.formatOnSave": true,
     "editor.fontFamily": "ZedMono NFM",
     "editor.fontLigatures": true,
-    "editor.lineHeight": 1.8
+    "editor.lineHeight": 1.8,
+    "editor.minimap.renderCharacters": false
 }
