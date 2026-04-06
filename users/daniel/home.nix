@@ -26,6 +26,12 @@ in {
       pull.rebase = true;
     };
   };
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
+  };
   programs.firefox = {
     enable = true;
     policies = {
@@ -230,6 +236,10 @@ in {
       terminal.shell.program = "tmux";
     };
     theme = "github_dark_default"; #https://github.com/alacritty/alacritty-theme/tree/master/themes
+  };
+
+  programs.obsidian = {
+    enable = true;
   };
 
   home.packages = with pkgs; [
