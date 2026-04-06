@@ -25,6 +25,27 @@
 
   programs.firefox = {
     enable = true;
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisableFirefoxAccounts = false;
+      FirefoxHome = {
+        Search = true;
+        TopSites = true;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        SponsoredPocket = false;
+        Snippets = false;
+      };
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+    };
     profiles.default = {
       isDefault = true;
       settings = {
@@ -73,14 +94,39 @@
       settings = {
         "sidebar.revamp" = true;
         "sidebar.verticalTabs" = true;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.startup.page" = 3;
+        "browser.sessionstore.resume_from_crash" = true;
+        "browser.ctrlTab.sortByRecentlyUsed" = true;
+        "browser.ctrlTab.previews" = true;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+        "browser.urlbar.groupLabels.enabled" = false;
+        "browser.urlbar.quicksuggest.enabled" = false;
+        "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.socialtracking.enabled" = true;
+        "browser.urlbar.suggest.recentsearches" = false;
+        "dom.battery.enabled" = false;
       };
     };
   };
 
   programs.vscode = {
     enable = true;
+    profiles.default = {
+      extensions = with pkgs; [
+        pkgs.vscode-extensions.github.github-vscode-theme
+        pkgs.vscode-extensions.vscodevim.vim
+        pkgs.vscode-extensions.ms-python.python
+        pkgs.vscode-extensions.vscjava.vscode-java-pack
+        pkgs.vscode-extensions.bbenoist.nix
+      ];
+    };
   };
   programs.htop = {
+    enable = true;
+  };
+  programs.fish = {
     enable = true;
   };
 
