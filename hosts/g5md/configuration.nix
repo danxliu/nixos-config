@@ -46,6 +46,13 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Themes
+    adwaita-icon-theme
+    hicolor-icon-theme
+    adw-gtk3
+    papirus-icon-theme
+    quintom-cursor-theme
+
     git
     wget
   ];

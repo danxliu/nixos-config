@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
-{
+let
+  gtkTheme = "adw-gtk3";
+  iconTheme = "Papirus";
+  cursorTheme = "Quintom_Ink";
+in {
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
   home.stateVersion = "25.11";
@@ -22,7 +26,6 @@
       pull.rebase = true;
     };
   };
-
   programs.firefox = {
     enable = true;
     policies = {
@@ -110,17 +113,19 @@
       };
     };
   };
-
   programs.vscode = {
     enable = true;
     profiles.default = {
-      extensions = with pkgs; [
-        pkgs.vscode-extensions.github.github-vscode-theme
-        pkgs.vscode-extensions.vscodevim.vim
-        pkgs.vscode-extensions.ms-python.python
-        pkgs.vscode-extensions.vscjava.vscode-java-pack
-        pkgs.vscode-extensions.bbenoist.nix
+      extensions = with pkgs.vscode-extensions; [
+        github.github-vscode-theme
+        pkief.material-icon-theme
+        vscodevim.vim
+        esbenp.prettier-vscode
+        ms-python.python
+        vscjava.vscode-java-pack
+        bbenoist.nix
       ];
+      userSettings = builtins.fromJSON (builtins.readFile ./vscode-settings.json);
     };
   };
   programs.htop = {
@@ -134,6 +139,16 @@
     alacritty
     gemini-cli-bin
     vesktop
+
+    # Gnome extensions
+    gnome-extension-manager
+    gnomeExtensions.just-perfection
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.media-controls
+    gnomeExtensions.caffeine
+    gnomeExtensions.user-themes
+    gnomeExtensions.adw-gtk3-colorizer
+    gnomeExtensions.legacy-gtk3-theme-scheme-auto-switcher
     
     ripgrep
     tree
@@ -148,5 +163,12 @@
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
     };
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme.name = cursorTheme;
+    theme.name = gtkTheme;
+    iconTheme.name = iconTheme;
   };
 }
