@@ -44,6 +44,9 @@
     enable = true;
     vimAlias = true;
   };
+  programs.tmux = {
+    enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     # Themes
