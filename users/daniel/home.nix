@@ -134,6 +134,7 @@
     alacritty
     gemini-cli-bin
     vesktop
+    
     ripgrep
     tree
   ];
