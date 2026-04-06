@@ -1,0 +1,26 @@
+{
+  "minimap": {
+    "thumb": "hover",
+    "show": "auto"
+  },
+  "relative_line_numbers": "enabled",
+  "buffer_line_height": "standard",
+  "icon_theme": "Material Icon Theme",
+  "buffer_font_family": ".ZedMono",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "GitHub Light",
+    "dark": "GitHub Dark"
+  }
+}

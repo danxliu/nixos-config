@@ -1,12 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/core/default.nix
-    ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/core/default.nix
+  ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
@@ -33,14 +40,14 @@
         enable = true;
         enableOffloadCmd = true;
       };
-      
+
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
 
   services.printing.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
   services.gnome.core-developer-tools.enable = false;
@@ -86,6 +93,10 @@
 
     nerd-fonts.zed-mono
 
+    nixd
+    nil
+    package-version-server
+
     git
     wget
     devenv
@@ -98,5 +109,4 @@
   };
 
   system.stateVersion = "25.11";
-
 }

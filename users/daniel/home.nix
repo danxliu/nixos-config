@@ -1,9 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   gtkTheme = "adw-gtk3";
   iconTheme = "Papirus";
   cursorTheme = "Quintom_Ink";
-in {
+in
+{
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
   home.stateVersion = "25.11";
@@ -78,13 +84,21 @@ in {
       search.engines = {
         nix-packages = {
           name = "Nix Packages";
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           definedAliases = [ "@np" ];
@@ -92,7 +106,7 @@ in {
 
         nixos-wiki = {
           name = "NixOS Wiki";
-          urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
+          urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
           icon = "https://wiki.nixos.org/favicon.ico";
           definedAliases = [ "@nw" ];
         };
@@ -159,17 +173,17 @@ in {
       # Mappings
       # Note: Home Manager places the config in ~/.config/tmux/tmux.conf
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
-      
+
       bind h select-pane -L
       bind l select-pane -R
       bind k select-pane -U
       bind j select-pane -D
-      
+
       bind C-h resize-pane -L 10
       bind C-l resize-pane -R 10
       bind C-k resize-pane -U 10
       bind C-j resize-pane -D 10
-      
+
       bind Tab next-window
       bind BTab previous-window
       bind t new-window
@@ -183,7 +197,7 @@ in {
     interactiveShellInit = ''
       set -g fish_greeting ""
       set -g fish_key_bindings fish_vi_key_bindings
-      
+
       function fish_prompt
         set_color black -b brwhite
         echo -n " 󰘧 "
@@ -235,15 +249,19 @@ in {
       };
       terminal.shell.program = "tmux";
     };
-    theme = "github_dark_default"; #https://github.com/alacritty/alacritty-theme/tree/master/themes
+    theme = "github_dark_default"; # https://github.com/alacritty/alacritty-theme/tree/master/themes
   };
-
+  programs.zed-editor = {
+    enable = true;
+    userSettings = builtins.fromJSON (builtins.readFile ./zed-settings.json);
+  };
   programs.obsidian = {
     enable = true;
   };
 
   home.packages = with pkgs; [
     vesktop
+    trayscale
 
     # Gnome extensions
     gnome-extension-manager
@@ -255,7 +273,7 @@ in {
     gnomeExtensions.user-themes
     gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
-    
+
     gemini-cli
     github-copilot-cli
     ripgrep
