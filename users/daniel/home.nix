@@ -5,6 +5,7 @@
   ...
 }:
 let
+  gtkTheme = "adw-gtk3";
   iconTheme = "Papirus";
   cursorTheme = "Quintom_Ink";
 in
@@ -108,6 +109,14 @@ in
           urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
           icon = "https://wiki.nixos.org/favicon.ico";
           definedAliases = [ "@nw" ];
+        };
+        home-manager-options = {
+          name = "HomeManager Options";
+          urls = [
+            { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
+          ];
+          icon = "https://wiki.nixos.org/favicon.ico";
+          definedAliases = [ "@hm" ];
         };
       };
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -322,6 +331,7 @@ in
 
   gtk = {
     enable = true;
+    theme.name = gtkTheme;
     cursorTheme.name = cursorTheme;
     iconTheme.name = iconTheme;
     gtk4.theme = config.gtk.theme;
