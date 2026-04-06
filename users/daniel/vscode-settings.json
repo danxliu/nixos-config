@@ -4,5 +4,7 @@
     "workbench.preferredLightColorTheme": "GitHub Light Default",
     "workbench.iconTheme": "material-icon-theme",
     "editor.formatOnSave": true,
-    "editor.fontLigatures": true
+    "editor.fontFamily": "ZedMono NFM",
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 1.8
 }

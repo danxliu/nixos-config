@@ -143,6 +143,7 @@ in {
         y = 20;
       };
       font = {
+        normal.family = "ZedMono NFM";
         size = 12;
         offset = {
           y = 8;

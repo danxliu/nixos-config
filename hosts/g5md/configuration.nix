@@ -95,6 +95,8 @@
     papirus-icon-theme
     quintom-cursor-theme
 
+    nerd-fonts.zed-mono
+
     git
     wget
   ];
