@@ -62,6 +62,7 @@
 
     git
     wget
+    comma
   ];
 
   services.openssh.enable = true;
