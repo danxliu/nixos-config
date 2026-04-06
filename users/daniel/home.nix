@@ -278,5 +278,6 @@ in {
     cursorTheme.name = cursorTheme;
     theme.name = gtkTheme;
     iconTheme.name = iconTheme;
+    gtk4.theme = config.gtk.theme;
   };
 }

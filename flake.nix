@@ -6,6 +6,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -47,6 +51,7 @@
                 }
               )
               ./hosts/${host}/configuration.nix
+              inputs.nix-index-database.nixosModules.nix-index
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
@@ -54,6 +59,9 @@
                 home-manager.extraSpecialArgs = {
                   inherit inputs;
                 };
+                home-manager.sharedModules = [
+                  inputs.nix-index-database.homeModules.nix-index
+                ];
                 home-manager.users = userConfigs;
               }
             ];

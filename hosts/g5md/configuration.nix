@@ -18,18 +18,41 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
+    open = true;
+    nvidiaSettings = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      
+      # Replace these with the IDs from the lspci command!
+      # If lspci said 00:02.0, use PCI:0:2:0
+      intelBusId = "PCI:0:2:0";   # Change this to "amdgpuBusId" if you have a Ryzen CPU
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   services.printing.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
   services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
   services.gnome.gnome-browser-connector.enable = true;
-
+  services.openssh.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
-
   services.libinput.enable = true;
 
   users.users.daniel = {
@@ -50,6 +73,10 @@
   };
   programs.fish.enable = true;
 
+  programs.nix-index.enable = true;
+  programs.nix-index.enableFishIntegration = true;
+  programs.nix-index-database.comma.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Themes
     adwaita-icon-theme
@@ -62,10 +89,13 @@
 
     git
     wget
-    comma
   ];
-
-  services.openssh.enable = true;
+  environment.variables = {
+    GBM_BACKEND = "nvidia-drm";
+    NIXOS_OZONE_WL = "1";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 
   system.stateVersion = "25.11";
 
