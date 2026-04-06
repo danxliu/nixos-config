@@ -137,7 +137,6 @@ in {
 
   home.packages = with pkgs; [
     alacritty
-    gemini-cli-bin
     vesktop
 
     # Gnome extensions
@@ -151,6 +150,8 @@ in {
     gnomeExtensions.gsconnect
     gnomeExtensions.appindicator
     
+    gemini-cli
+    copilot-cli
     ripgrep
     tree
   ];
