@@ -42,7 +42,6 @@ in
     enable = true;
     systemd.enable = true;
   };
-  programs.wofi.enable = true;
   programs.firefox = {
     enable = true;
     policies = {
@@ -271,6 +270,18 @@ in
   programs.obsidian = {
     enable = true;
   };
+  programs.wofi = {
+    enable = true;
+    settings = {
+      width = 500;
+      height = 250;
+      no_actions = true;
+      allow_images = true;
+      image_size = 32;
+      hide_scroll = true;
+    };
+    style = ./wofi/style.css;
+  };
 
   home.packages = with pkgs; [
     vesktop
@@ -324,8 +335,6 @@ in
       "niri/config.kdl".source = ./niri/config.kdl;
       "waybar/config.jsonc".source = ./waybar/config.jsonc;
       "waybar/style.css".source = ./waybar/style.css;
-      "wofi/config".source = ./wofi/config;
-      "wofi/style.css".source = ./wofi/style.css;
       "nvim/init.lua".source = ./nvim/init.lua;
       "nvim/lua/options.lua".source = ./nvim/lua/options.lua;
       "nvim/lua/keybinds.lua".source = ./nvim/lua/keybinds.lua;
