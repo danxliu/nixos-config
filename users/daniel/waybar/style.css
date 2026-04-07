@@ -1,0 +1,67 @@
+window#waybar {
+  background-color: #f7f7f7;
+}
+
+.modules-left {
+  margin-left: 0.8em;
+}
+
+.modules-right {
+  margin-right: 0.8em;
+}
+
+tooltip {
+  font-family: Iosevka Nerd Font Mono;
+  font-size: 14px;
+}
+
+#window,
+#workspaces,
+#mpris,
+#tray,
+#pulseaudio,
+#network,
+#battery,
+#custom-separator,
+#clock {
+  margin: 0.4em;
+  font-family: Iosevka Nerd Font Mono;
+  font-size: 14px;
+  font-weight: 600;
+  color: #454545;
+}
+
+#workspaces button {
+  padding: 0em 0.4em;
+  margin: 0em 0.1em;
+  color: #7c7c7c;
+}
+
+#workspaces button.focused {
+  color: #101010;
+}
+
+#workspaces button.urgent {
+  color: #464646;
+}
+
+window#waybar.empty #window {
+  margin: 0em;
+}
+
+#pulseaudio-slider slider {
+  all: unset;
+  min-height: 0px;
+}
+
+#pulseaudio-slider trough {
+  min-height: 10px;
+  min-width: 60px;
+  border-radius: 0;
+  background: #a0a0a0;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 0;
+  background: #101010;
+}

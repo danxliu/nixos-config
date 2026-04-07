@@ -33,12 +33,16 @@ in
       pull.rebase = true;
     };
   };
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
+  services.dunst.enable = true;
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
+  programs.wofi.enable = true;
   programs.firefox = {
     enable = true;
     policies = {
@@ -276,6 +280,12 @@ in
     github-copilot-cli
     ripgrep
     tree
+    neovim
+    awww
+    hyprlock
+    thunar
+    xbacklight
+    zathura
   ];
 
   systemd.user.services.themeSync = {
@@ -308,14 +318,31 @@ in
     };
   };
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
+  xdg = {
+    configFile = {
+      "dunst/dunstrc".source = ./dunst/dunstrc;
+      "niri/config.kdl".source = ./niri/config.kdl;
+      "waybar/config.jsonc".source = ./waybar/config.jsonc;
+      "waybar/style.css".source = ./waybar/style.css;
+      "wofi/config".source = ./wofi/config;
+      "wofi/style.css".source = ./wofi/style.css;
+      "nvim/init.lua".source = ./nvim/init.lua;
+      "nvim/lua/options.lua".source = ./nvim/lua/options.lua;
+      "nvim/lua/keybinds.lua".source = ./nvim/lua/keybinds.lua;
+      "nvim/lua/loader.lua".source = ./nvim/lua/loader.lua;
+      "nvim/lua/plugins.lua".source = ./nvim/lua/plugins.lua;
+      "nvim/snippets/package.json".source = ./nvim/snippets/package.json;
+      "nvim/snippets/cpp.json".source = ./nvim/snippets/cpp.json;
+    };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/about" = "firefox.desktop";
+        "x-scheme-handler/unknown" = "firefox.desktop";
+      };
     };
   };
 

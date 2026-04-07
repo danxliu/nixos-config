@@ -1,0 +1,41 @@
+* {
+  font-family: Iosevka Nerd Font Mono;
+  font-size: 14px;
+}
+
+window {
+  padding: 2em;
+  border: 2px solid #a0a0a0;
+  background-color: #f7f7f7;
+}
+
+#outer-box {
+  margin: 1em;
+}
+
+#input {
+  padding: 0.2em 1.0em;
+  margin: 0em 0em 1.0em 0em;
+  border: none;
+  background-color: unset;
+}
+
+#input:focus {
+  box-shadow: none;
+}
+
+#entry {
+  padding: 0.2em;
+  border: none;
+}
+#entry:selected {
+  background-color: #101010;
+  box-shadow: none;
+}
+#text:selected {
+  color: #f7f7f7;
+}
+#img {
+  margin: 0.5em;
+}
+

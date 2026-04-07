@@ -48,12 +48,20 @@
 
   services.printing.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
-  services.displayManager.cosmic-greeter.enable = true;
-  services.desktopManager.cosmic.enable = true;
-  services.system76-scheduler.enable = true;
+  programs.niri.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${lib.getExe pkgs.tuigreet} --time --remember --remember-user-session --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   services.openssh.enable = true;
   services.pipewire = {
@@ -72,10 +80,6 @@
     enable = true;
     defaultEditor = true;
   };
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-  };
   programs.tmux = {
     enable = true;
   };
@@ -85,6 +89,11 @@
   programs.nix-index.enableFishIntegration = true;
   programs.nix-index-database.comma.enable = true;
   programs.nix-ld.enable = true;
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.zed-mono
+    nerd-fonts.iosevka
+  ];
 
   environment.systemPackages = with pkgs; [
     gtk3
@@ -97,8 +106,6 @@
     papirus-icon-theme
     quintom-cursor-theme
 
-    nerd-fonts.zed-mono
-
     nixd
     nil
     package-version-server
@@ -108,7 +115,10 @@
     alacritty
 
     jdk21
+    nodejs_24
+    nodejs_20
 
+    unzip
     git
     wget
     devenv
