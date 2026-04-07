@@ -5,7 +5,8 @@
   ...
 }:
 let
-  gtkTheme = "adw-gtk3";
+  gtkThemeLight = "adw-gtk3";
+  gtkThemeDark = "adw-gtk3-dark";
   iconTheme = "Papirus";
   cursorTheme = "Quintom_Ink";
 in
@@ -300,10 +301,10 @@ in
             set_theme() {
               CURRENT_THEME=$(${pkgs.glib}/bin/gsettings get org.gnome.desktop.interface color-scheme)
               if [ "$CURRENT_THEME" = "'prefer-dark'" ]; then
-                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme \'adw-gtk3-dark\'
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme \'${gtkThemeDark}\'
                 ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme \'prefer-dark\'
               else
-                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme \'adw-gtk3\'
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme \'${gtkThemeLight}\'
                 ${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface color-scheme \'default\'
               fi
             }
@@ -331,10 +332,8 @@ in
 
   gtk = {
     enable = true;
-    theme.name = gtkTheme;
     cursorTheme.name = cursorTheme;
     iconTheme.name = iconTheme;
-    gtk4.theme = config.gtk.theme;
   };
   dconf.enable = true;
 }

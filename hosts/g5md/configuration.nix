@@ -100,6 +100,9 @@
     nil
     package-version-server
 
+    pavucontrol
+    alacritty
+
     git
     wget
     devenv
