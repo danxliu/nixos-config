@@ -272,17 +272,6 @@ in
     vesktop
     trayscale
 
-    # Gnome extensions
-    gnome-extension-manager
-    gnome-tweaks
-    gnomeExtensions.just-perfection
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.media-controls
-    gnomeExtensions.caffeine
-    gnomeExtensions.user-themes
-    gnomeExtensions.gsconnect
-    gnomeExtensions.appindicator
-
     gemini-cli
     github-copilot-cli
     ripgrep

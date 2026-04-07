@@ -33,7 +33,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
-    open = true;
+    open = false;
     nvidiaSettings = true;
     prime = {
       offload = {
@@ -50,9 +50,11 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  services.gnome.core-developer-tools.enable = false;
-  services.gnome.games.enable = false;
-  services.gnome.gnome-browser-connector.enable = true;
+
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+  services.system76-scheduler.enable = true;
+
   services.openssh.enable = true;
   services.pipewire = {
     enable = true;
@@ -82,6 +84,7 @@
   programs.nix-index.enable = true;
   programs.nix-index.enableFishIntegration = true;
   programs.nix-index-database.comma.enable = true;
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     gtk3
@@ -99,19 +102,20 @@
     nixd
     nil
     package-version-server
+    jdt-language-server
 
     pavucontrol
     alacritty
+
+    jdk21
 
     git
     wget
     devenv
   ];
-  environment.variables = {
-    GBM_BACKEND = "nvidia-drm";
-    NIXOS_OZONE_WL = "1";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "1";
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk21;
   };
 
   system.stateVersion = "25.11";

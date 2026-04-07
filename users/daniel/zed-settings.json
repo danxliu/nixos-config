@@ -22,5 +22,12 @@
     "mode": "system",
     "light": "GitHub Light",
     "dark": "GitHub Dark"
+  },
+  "lsp": {
+    "jdtls": {
+      "binary": {
+        "path": "jdtls"
+      }
+    }
   }
 }
