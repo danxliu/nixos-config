@@ -10,11 +10,19 @@
 │       ├── configuration.nix
 │       └── hardware-configuration.nix
 ├── modules # Reusable NixOS modules
-│   └── core
-│       └── default.nix
+│   ├── home
+│   │   ├── apps
+│   │   ├── desktop
+│   │   ├── services
+│   │   └── theme
+│   └── nixos
+│       ├── core
+│       ├── desktop
+│       ├── services
+│       └── users
 └── users # User-specific Home Manager configurations.
     └── user
-        └── home.nix
+        └── default.nix
 ```
 
 ## Commands

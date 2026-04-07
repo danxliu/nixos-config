@@ -1,0 +1,18 @@
+{
+  ...
+}:
+
+{
+  programs.wofi = {
+    enable = true;
+    settings = {
+      width = 500;
+      height = 250;
+      no_actions = true;
+      allow_images = true;
+      image_size = 32;
+      hide_scroll = true;
+    };
+    style = ./style.css;
+  };
+}

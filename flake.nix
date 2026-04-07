@@ -12,64 +12,48 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      nur,
-      ...
-    }@inputs:
+  outputs = inputs@{ nixpkgs, home-manager, nur, ... }:
     let
+      lib = nixpkgs.lib;
+
       getSubDirs =
         dir:
-        builtins.attrNames (
-          nixpkgs.lib.filterAttrs (name: type: type == "directory") (builtins.readDir dir)
+        lib.attrNames (
+          lib.filterAttrs (_: type: type == "directory") (builtins.readDir dir)
         );
 
       hosts = getSubDirs ./hosts;
-      users = getSubDirs ./users;
+      users = builtins.filter (user: builtins.pathExists (./users + "/${user}/default.nix")) (getSubDirs ./users);
 
-      userConfigs = builtins.listToAttrs (
-        map (user: {
-          name = user;
-          value = import ./users/${user}/home.nix;
-        }) users
-      );
+      homeUsers = lib.genAttrs users (user: import (./users + "/${user}/default.nix"));
 
-      nixosConfigurations = builtins.listToAttrs (
-        map (host: {
-          name = host;
-          value = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              (
-                { pkgs, ... }:
-                {
-                  nixpkgs.overlays = [ nur.overlays.default ];
-                }
-              )
-              ./hosts/${host}/configuration.nix
-              inputs.nix-index-database.nixosModules.nix-index
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                };
-                home-manager.sharedModules = [
-                  inputs.nix-index-database.homeModules.nix-index
-                ];
-                home-manager.users.daniel = import ./users/daniel/home.nix;
-              }
-            ];
-          };
-        }) hosts
-      );
+      homeManagerModule = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = { inherit inputs; };
+          sharedModules = [
+            inputs.nix-index-database.homeModules.nix-index
+          ];
+          users = homeUsers;
+        };
+      };
+
+      mkHost =
+        host:
+        lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ({ ... }: { nixpkgs.overlays = [ nur.overlays.default ]; })
+            ./hosts/${host}/configuration.nix
+            inputs.nix-index-database.nixosModules.nix-index
+            home-manager.nixosModules.home-manager
+            homeManagerModule
+          ];
+        };
     in
     {
-      inherit nixosConfigurations;
+      nixosConfigurations = lib.genAttrs hosts mkHost;
     };
 }
