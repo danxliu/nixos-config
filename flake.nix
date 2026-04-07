@@ -62,7 +62,7 @@
                 home-manager.sharedModules = [
                   inputs.nix-index-database.homeModules.nix-index
                 ];
-                home-manager.users = userConfigs;
+                home-manager.users.daniel = import ./users/daniel/home.nix;
               }
             ];
           };

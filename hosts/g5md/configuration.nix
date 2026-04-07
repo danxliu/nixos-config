@@ -106,11 +106,6 @@
     papirus-icon-theme
     quintom-cursor-theme
 
-    nixd
-    nil
-    package-version-server
-    jdt-language-server
-
     pavucontrol
     alacritty
 

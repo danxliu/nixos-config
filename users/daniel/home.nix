@@ -350,15 +350,77 @@ in
     style = ./wofi/style.css;
   };
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/nvim-treesitter.lua;
+      }
+      {
+        plugin = luasnip;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/luasnip.lua;
+      }
+      nvim-lspconfig
+      {
+        plugin = blink-cmp;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/blink-cmp.lua;
+      }
+      {
+        plugin = mini-pick;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/mini-pick.lua;
+      }
+      nvim-web-devicons
+      {
+        plugin = dashboard-nvim;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/dashboard.lua;
+      }
+      {
+        plugin = nvim-colorizer-lua;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/colorizer.lua;
+      }
+      vimtex
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/lualine.lua;
+      }
+      {
+        plugin = nvim-tree-lua;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/nvim-tree.lua;
+      }
+      github-nvim-theme
+    ];
+    initLua = builtins.readFile ./nvim/init.lua;
+  };
+
   home.packages = with pkgs; [
     vesktop
     trayscale
+
+    # LSPs
+    clang-tools
+    pyright
+    jdt-language-server
+    typescript-language-server
+    vscode-langservers-extracted
+    rust-analyzer
+    nil
+    marksman
+    texlab
 
     gemini-cli
     github-copilot-cli
     ripgrep
     tree
-    neovim
     awww
     hyprlock
     thunar
@@ -400,11 +462,6 @@ in
     configFile = {
       "dunst/dunstrc".source = ./dunst/dunstrc;
       "niri/config.kdl".source = ./niri/config.kdl;
-      "nvim/init.lua".source = ./nvim/init.lua;
-      "nvim/lua/options.lua".source = ./nvim/lua/options.lua;
-      "nvim/lua/keybinds.lua".source = ./nvim/lua/keybinds.lua;
-      "nvim/lua/loader.lua".source = ./nvim/lua/loader.lua;
-      "nvim/lua/plugins.lua".source = ./nvim/lua/plugins.lua;
       "nvim/snippets/package.json".source = ./nvim/snippets/package.json;
       "nvim/snippets/cpp.json".source = ./nvim/snippets/cpp.json;
     };
