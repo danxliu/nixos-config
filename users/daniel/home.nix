@@ -428,6 +428,21 @@ in
     zathura
   ];
 
+  systemd.user.services.awww = {
+    Unit = {
+      Description = "Awww Wallpaper Daemon";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.awww}/bin/awww-daemon";
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   systemd.user.services.themeSync = {
     Unit = {
       Description = "Sync GTK3 theme";

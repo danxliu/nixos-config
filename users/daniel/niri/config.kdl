@@ -216,8 +216,6 @@ gestures {
     }
 }
 
-spawn-at-startup "swww-daemon"
-
 prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot-%Y%m%d-%H%M%S.png"
