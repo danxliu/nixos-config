@@ -414,6 +414,7 @@ in
     vscode-langservers-extracted
     rust-analyzer
     nil
+    nixd
     marksman
     texlab
 
