@@ -1,4 +1,5 @@
 {
+  theme,
   ...
 }:
 
@@ -13,6 +14,6 @@
       image_size = 32;
       hide_scroll = true;
     };
-    style = ./style.css;
+    style = theme.replaceText (builtins.readFile ./style.css);
   };
 }

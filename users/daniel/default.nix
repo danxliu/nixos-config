@@ -1,9 +1,10 @@
-{ pkgs, config, inputs, theme, ... }:
-let
-  fontMonoName = "ZedMono NFM";
-  fontUIName = "IBM Plex Sans";
-  fontSize = 12;
-in
+{
+  pkgs,
+  config,
+  inputs,
+  theme,
+  ...
+}:
 {
   imports = [
     ../../modules/home/theme
@@ -25,7 +26,7 @@ in
   home.stateVersion = "25.11";
 
   programs.home-manager.enable = true;
-programs.gh = {
+  programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
     settings = {
@@ -48,14 +49,14 @@ programs.gh = {
   apps.dunst = {
     iconTheme = "Papirus";
     font = {
-      name = fontUIName;
-      size = fontSize;
+      name = theme.fontUIName;
+      size = theme.fontSize;
     };
   };
   apps.alacritty = {
     font = {
-      name = fontMonoName;
-      size = fontSize;
+      name = theme.fontMonoName;
+      size = theme.fontSize;
     };
   };
 

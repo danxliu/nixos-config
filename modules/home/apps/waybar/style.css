@@ -1,18 +1,18 @@
 window#waybar {
-  background-color: @base00@;
+    background-color: @base00@;
 }
 
 .modules-left {
-  margin-left: 0.8em;
+    margin-left: 0.8em;
 }
 
 .modules-right {
-  margin-right: 0.8em;
+    margin-right: 0.8em;
 }
 
 tooltip {
-  font-family: Iosevka Nerd Font Mono;
-  font-size: 14px;
+    font-family: @fontUI@;
+    font-size: @fontSize@;
 }
 
 #window,
@@ -24,27 +24,27 @@ tooltip {
 #battery,
 #custom-separator,
 #clock {
-  margin: 0.4em;
-  font-family: Iosevka Nerd Font Mono;
-  font-size: 14px;
-  font-weight: 600;
-  color: @base07@;
+    margin: 0.4em;
+    font-family: @fontUI@;
+    font-size: @fontSize@;
+    font-weight: 600;
+    color: @base07@;
 }
 
 #workspaces button {
-  padding: 0em 0.4em;
-  margin: 0em 0.1em;
-  color: @base03@;
+    padding: 0em 0.4em;
+    margin: 0em 0.1em;
+    color: @base03@;
 }
 
 #workspaces button.focused {
-  color: @base0B@;
+    color: @base0D@;
 }
 
 #workspaces button.urgent {
-  color: @base08@;
+    color: @base08@;
 }
 
 window#waybar.empty #window {
-  margin: 0em;
+    margin: 0em;
 }

@@ -1,11 +1,30 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 let
+  fontMonoName = "ZedMono NFM";
+  fontUIName = "IBM Plex Sans";
+  fontSize = 12;
   replaceText =
     text:
     let
       palette = config.colorScheme.palette;
-      placeholders = map (name: "@${name}@") (builtins.attrNames palette);
-      replacements = map (val: "#${val}") (builtins.attrValues palette);
+      placeholders = map (name: "@${name}@") (
+        (builtins.attrNames palette)
+        ++ [
+          "fontMono"
+          "fontUI"
+          "fontSize"
+        ]
+      );
+      replacements = (map (val: "#${val}") (builtins.attrValues palette)) ++ [
+        fontMonoName
+        fontUIName
+        (toString fontSize)
+      ];
     in
     builtins.replaceStrings placeholders replacements text;
 in
@@ -16,6 +35,9 @@ in
 
   _module.args.theme = {
     inherit replaceText;
+    inherit fontMonoName;
+    inherit fontUIName;
+    inherit fontSize;
   };
 
   colorScheme = {

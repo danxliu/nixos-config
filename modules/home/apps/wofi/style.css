@@ -1,12 +1,12 @@
 * {
-  font-family: Iosevka Nerd Font Mono;
-  font-size: 14px;
+  font-family: @fontUI@;
+  font-size: @fontSize@;
 }
 
 window {
   padding: 2em;
-  border: 2px solid #a0a0a0;
-  background-color: #f7f7f7;
+  border: 2px solid @base0D@;
+  background-color: @base00@;
 }
 
 #outer-box {
@@ -29,13 +29,12 @@ window {
   border: none;
 }
 #entry:selected {
-  background-color: #101010;
+  background-color: @base0D@;
   box-shadow: none;
 }
 #text:selected {
-  color: #f7f7f7;
+  color: @base00@;
 }
 #img {
   margin: 0.5em;
 }
-
