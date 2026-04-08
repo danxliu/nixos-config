@@ -10,20 +10,27 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nur, ... }:
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      nur,
+      nix-colors,
+      ...
+    }:
     let
       lib = nixpkgs.lib;
 
       getSubDirs =
-        dir:
-        lib.attrNames (
-          lib.filterAttrs (_: type: type == "directory") (builtins.readDir dir)
-        );
+        dir: lib.attrNames (lib.filterAttrs (_: type: type == "directory") (builtins.readDir dir));
 
       hosts = getSubDirs ./hosts;
-      users = builtins.filter (user: builtins.pathExists (./users + "/${user}/default.nix")) (getSubDirs ./users);
+      users = builtins.filter (user: builtins.pathExists (./users + "/${user}/default.nix")) (
+        getSubDirs ./users
+      );
 
       homeUsers = lib.genAttrs users (user: import (./users + "/${user}/default.nix"));
 
@@ -43,9 +50,17 @@
         host:
         lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit nix-colors;
+          };
           modules = [
-            ({ ... }: { nixpkgs.overlays = [ nur.overlays.default ]; })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [ nur.overlays.default ];
+              }
+            )
             ./hosts/${host}/configuration.nix
             inputs.nix-index-database.nixosModules.nix-index
             home-manager.nixosModules.home-manager

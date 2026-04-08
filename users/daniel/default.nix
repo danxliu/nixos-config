@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -14,8 +14,30 @@
     ../../modules/home/apps/zed
     ../../modules/home/desktop/xdg.nix
     ../../modules/home/services/session.nix
+    inputs.nix-colors.homeManagerModules.default
   ];
 
+  colorScheme = {
+    name = "Github Dark";
+    palette = {
+      base00 = "0d1117";
+      base01 = "161b22";
+      base02 = "21262d";
+      base03 = "89929b";
+      base04 = "c6cdd5";
+      base05 = "ecf2f8";
+      base06 = "fa7970"; # lightred
+      base07 = "f84b3e"; # red
+      base08 = "faa356"; # yellow
+      base09 = "fbb77b"; # lightyellow
+      base0A = "a2d2fb"; # lightblue
+      base0B = "77bdfb"; # blue
+      base0C = "cea5fb"; # lightpurp
+      base0D = "b16ef8"; # purp
+      base0E = "7ce38b"; # lightgreen
+      base0F = "53db67"; # green
+    };
+  };
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
   home.stateVersion = "25.11";
@@ -40,6 +62,11 @@
       init.defaultBranch = "main";
       pull.rebase = true;
     };
+  };
+
+  apps.dunst = {
+    iconTheme = "Papirus";
+    font = "ZedMono NFM 10";
   };
 
   home.sessionVariables = {
