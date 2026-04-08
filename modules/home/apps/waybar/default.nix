@@ -15,18 +15,18 @@
         reload_style_on_change = true;
         modules-left = [
           "niri/workspaces"
-          "custom/separator"
           "niri/window"
         ];
-        modules-center = [ "clock" ];
+        modules-center = [ ];
         modules-right = [
           "tray"
           "custom/separator"
           "network"
-          "custom/separator"
           "battery"
           "custom/separator"
-          "pulseaudio"
+          "group/audio"
+          "custom/separator"
+          "clock"
         ];
 
         "niri/workspaces" = {
@@ -40,9 +40,15 @@
             "^(.*)$" = "<span text_transform='capitalize'>$1</span>";
           };
         };
-
         "custom/separator" = {
-          format = "|";
+          format = " / ";
+        };
+        "group/audio" = {
+          orientation = "horizontal";
+          modules = [
+            "pulseaudio"
+            "pulseaudio/slider"
+          ];
         };
 
         clock = {
@@ -52,26 +58,47 @@
         };
 
         battery = {
-          format = "BAT: {capacity}%";
-          tooltip-format = "BAT: {capacity}%";
-          format-charging = "BAT: {capacity}%+";
-          tooltip-format-charging = "BAT: {capacity}%+";
+          format = "{icon}";
+          format-icons = [
+            "󱊡"
+            "󱊢"
+            "󱊣"
+          ];
+          tooltip-format = "{capacity}%";
+          format-charging = "󰂄";
+          tooltip-format-charging = "{capacity}%+";
         };
 
         network = {
-          format-wifi = "WIFI: {essid}";
-          tooltip-format-wifi = "WIFI: {essid}";
-          format-ethernet = "ETH: {ifname}";
-          tooltip-format-ethernet = "ETH: {ifname}";
-          format-disconnected = "WIFI: DISCONNECTED";
-          tooltip-format-disconnected = "DISCONNECTED";
+          format-wifi = "{icon}";
+          format-icons = [
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          tooltip-format-wifi = "{essid}";
+          format-ethernet = "󰈀";
+          tooltip-format-ethernet = "{ifname}";
+          format-disconnected = "󰤮";
+          tooltip-format-disconnected = "Disconnected";
         };
 
         pulseaudio = {
-          format = "VOL: {volume}%";
-          format-muted = "[VOL: MUTED]";
-          tooltip-format = "VOL: {volume}%";
-          tooltip-format-muted = "MUTED";
+          format = "{icon}";
+          format-icons = [
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
+          format-muted = "󰝟";
+          tooltip-format = "{volume}%";
+          tooltip-format-muted = "Muted";
+        };
+        "pulseaudio/slider" = {
+          min = 0;
+          max = 100;
+          orientation = "horizontal";
         };
 
         tray = {

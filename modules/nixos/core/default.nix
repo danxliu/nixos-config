@@ -24,6 +24,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.zed-mono
     nerd-fonts.iosevka
+    material-design-icons
     ibm-plex
   ];
 

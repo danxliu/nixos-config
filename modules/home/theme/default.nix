@@ -7,6 +7,7 @@
 let
   fontMonoName = "ZedMono NFM";
   fontUIName = "IBM Plex Sans";
+  fontIconName = "Material Design Icon";
   fontSize = 12;
   replaceText =
     text:
@@ -17,12 +18,14 @@ let
         ++ [
           "fontMono"
           "fontUI"
+          "fontIcon"
           "fontSize"
         ]
       );
       replacements = (map (val: "#${val}") (builtins.attrValues palette)) ++ [
         fontMonoName
         fontUIName
+        fontIconName
         (toString fontSize)
       ];
     in
@@ -37,6 +40,7 @@ in
     inherit replaceText;
     inherit fontMonoName;
     inherit fontUIName;
+    inherit fontIconName;
     inherit fontSize;
   };
 
