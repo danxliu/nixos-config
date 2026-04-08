@@ -56,7 +56,7 @@ in
           horizontal_padding = 16;
           text_icon_padding = 16;
           frame_width = 2;
-          frame_color = "#${colors.base05}";
+          frame_color = "#${colors.base01}";
           gap_size = 0;
           separator_color = "frame";
           sort = true;
@@ -83,7 +83,7 @@ in
           always_run_script = true;
           title = "Dunst";
           class = "Dunst";
-          corner_radius = 0;
+          corner_radius = 8;
           ignore_dbusclose = false;
           force_xwayland = false;
         };
@@ -91,7 +91,6 @@ in
         urgency_low = {
           background = "#${colors.base00}";
           foreground = "#${colors.base05}";
-          frame_color = "#${colors.base01}";
           timeout = 10;
           default_icon = "dialog-information";
         };
@@ -99,7 +98,6 @@ in
         urgency_normal = {
           background = "#${colors.base00}";
           foreground = "#${colors.base05}";
-          frame_color = "#${colors.base01}";
           timeout = 10;
           override_pause_level = 30;
           default_icon = "dialog-information";
@@ -108,7 +106,7 @@ in
         urgency_critical = {
           background = "#${colors.base00}";
           foreground = "#${colors.base07}";
-          frame_color = "#${colors.base01}";
+          frame_color = "#${colors.base08}";
           timeout = 0;
           override_pause_level = 60;
           default_icon = "dialog-warning";
