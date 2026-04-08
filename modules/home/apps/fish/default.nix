@@ -10,7 +10,7 @@
       set -g fish_key_bindings fish_vi_key_bindings
 
       function fish_prompt
-        set_color black -b brwhite
+        set_color black -b brblack
         echo -n " 󰘧 "
         set_color normal
         echo -n " "
@@ -27,7 +27,7 @@
         end
 
         if test -n "$duration"
-          set_color black -b brwhite
+          set_color black -b brblack
           echo -n " $duration"
           echo -n "ms "
         end
