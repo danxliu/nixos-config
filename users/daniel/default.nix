@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 let
-  fontName = "ZedMono NFM";
+  fontMonoName = "ZedMono NFM";
+  fontUIName = "IBM Plex Sans";
   fontSize = 12;
 in
 {
@@ -70,13 +71,13 @@ in
   apps.dunst = {
     iconTheme = "Papirus";
     font = {
-      name = fontName;
+      name = fontUIName;
       size = fontSize;
     };
   };
   apps.alacritty = {
     font = {
-      name = fontName;
+      name = fontMonoName;
       size = fontSize;
     };
   };
