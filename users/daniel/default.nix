@@ -5,6 +5,7 @@
     ../../modules/home/apps/alacritty
     ../../modules/home/apps/firefox
     ../../modules/home/apps/fish
+    ../../modules/home/apps/dunst
     ../../modules/home/apps/neovim
     ../../modules/home/apps/tmux
     ../../modules/home/apps/vscode
@@ -46,7 +47,6 @@
     VISUAL = "nvim";
   };
 
-  services.dunst.enable = true;
   programs.htop.enable = true;
   programs.obsidian.enable = true;
 

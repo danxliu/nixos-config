@@ -2,6 +2,7 @@
 
 {
   programs.niri.enable = true;
+  services.blueman.enable = true;
 
   services.greetd = {
     enable = true;
