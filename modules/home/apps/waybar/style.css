@@ -1,5 +1,5 @@
 window#waybar {
-  background-color: #f7f7f7;
+  background-color: @base00@;
 }
 
 .modules-left {
@@ -28,40 +28,23 @@ tooltip {
   font-family: Iosevka Nerd Font Mono;
   font-size: 14px;
   font-weight: 600;
-  color: #454545;
+  color: @base07@;
 }
 
 #workspaces button {
   padding: 0em 0.4em;
   margin: 0em 0.1em;
-  color: #7c7c7c;
+  color: @base03@;
 }
 
 #workspaces button.focused {
-  color: #101010;
+  color: @base0B@;
 }
 
 #workspaces button.urgent {
-  color: #464646;
+  color: @base08@;
 }
 
 window#waybar.empty #window {
   margin: 0em;
-}
-
-#pulseaudio-slider slider {
-  all: unset;
-  min-height: 0px;
-}
-
-#pulseaudio-slider trough {
-  min-height: 10px;
-  min-width: 60px;
-  border-radius: 0;
-  background: #a0a0a0;
-}
-
-#pulseaudio-slider highlight {
-  border-radius: 0;
-  background: #101010;
 }

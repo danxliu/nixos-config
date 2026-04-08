@@ -1,11 +1,12 @@
 {
-  ...
+  config, theme, ...
 }:
-
-{
+let
+  niriTemplate = builtins.readFile ../apps/niri/config.kdl;
+in {
   xdg = {
     configFile = {
-      "niri/config.kdl".source = ../apps/niri/config.kdl;
+      "niri/config.kdl".text = theme.replaceText niriTemplate;
       "nvim/snippets/package.json".source = ../apps/neovim/nvim/snippets/package.json;
       "nvim/snippets/cpp.json".source = ../apps/neovim/nvim/snippets/cpp.json;
     };

@@ -1,5 +1,5 @@
 {
-  ...
+  theme, ...
 }:
 
 {
@@ -79,6 +79,6 @@
         };
       };
     };
-    style = ./style.css;
+    style = theme.replaceText (builtins.readFile ./style.css);
   };
 }

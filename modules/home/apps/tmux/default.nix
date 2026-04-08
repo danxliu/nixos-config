@@ -13,13 +13,13 @@
 
       set -g status-position bottom
       set -g status-justify left
-      set -g status-style 'fg=color8'
-      setw -g mode-style 'fg=black bg=color8'
-      set -g status-right-style 'fg=black bg=color8'
+      set -g status-style 'fg=blue'
+      setw -g mode-style 'fg=black bg=blue'
+      set -g status-right-style 'fg=black bg=blue'
       set -g status-right ' %Y-%m-%d %H:%M %p '
-      setw -g window-status-current-style 'fg=black bg=color8'
+      setw -g window-status-current-style 'fg=black bg=blue'
       setw -g window-status-current-format ' #I #W '
-      set -g message-style 'fg=black bg=color8 bold'
+      set -g message-style 'fg=black bg=blue bold'
 
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
 

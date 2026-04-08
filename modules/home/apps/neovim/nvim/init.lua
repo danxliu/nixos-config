@@ -47,7 +47,6 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.cmd("colorscheme github_dark_default")
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 local servers = {

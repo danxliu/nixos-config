@@ -42,24 +42,29 @@ in
         };
         terminal.shell.program = "tmux";
         colors = {
+          # Primary colors
           primary.background = "#${colors.base00}";
           primary.foreground = "#${colors.base05}";
-          normal.black = "#${colors.base00}";
-          normal.red = "#${colors.base07}";
-          normal.green = "#${colors.base0F}";
-          normal.yellow = "#${colors.base0E}";
-          normal.blue = "#${colors.base0B}";
-          normal.magenta = "#${colors.base0D}";
-          normal.cyan = "#${colors.base0C}";
-          normal.white = "#${colors.base05}";
-          bright.black = "#${colors.base03}";
-          bright.red = "#${colors.base07}";
-          bright.green = "#${colors.base0F}";
-          bright.yellow = "#${colors.base0E}";
-          bright.blue = "#${colors.base0B}";
-          bright.magenta = "#${colors.base0D}";
-          bright.cyan = "#${colors.base0C}";
-          bright.white = "#${colors.base05}";
+
+          # Normal colors
+          normal.black   = "#${colors.base00}";
+          normal.red     = "#${colors.base08}";
+          normal.green   = "#${colors.base0B}";
+          normal.yellow  = "#${colors.base0A}";
+          normal.blue    = "#${colors.base0D}";
+          normal.magenta = "#${colors.base0E}";
+          normal.cyan    = "#${colors.base0C}";
+          normal.white   = "#${colors.base05}";
+
+          # Bright colors
+          bright.black   = "#${colors.base03}";
+          bright.red     = "#${colors.base08}";
+          bright.green   = "#${colors.base0B}";
+          bright.yellow  = "#${colors.base0A}";
+          bright.blue    = "#${colors.base0D}";
+          bright.magenta = "#${colors.base0E}";
+          bright.cyan    = "#${colors.base0C}";
+          bright.white   = "#${colors.base07}";
         };
       };
     };
