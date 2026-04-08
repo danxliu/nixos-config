@@ -15,9 +15,15 @@ in
       type = types.str;
       default = "Papirus";
     };
-    font = mkOption {
-      type = types.str;
-      default = "ZedMono NFM 10";
+    font = {
+      name = mkOption {
+        type = types.str;
+        default = "ZedMono NFM";
+      };
+      size = mkOption {
+        type = types.int;
+        default = 12;
+      };
     };
   };
   config = {
@@ -54,7 +60,7 @@ in
           gap_size = 0;
           separator_color = "frame";
           sort = true;
-          font = "${cfg.font}";
+          font = "${cfg.font.name} ${toString cfg.font.size}";
           line_height = 0;
           markup = "full";
           format = ''<span text_transform="capitalize"><b>%s</b></span>\n%b'';

@@ -1,5 +1,8 @@
 { pkgs, inputs, ... }:
-
+let
+  fontName = "ZedMono NFM";
+  fontSize = 12;
+in
 {
   imports = [
     ../../modules/home/apps/alacritty
@@ -66,7 +69,16 @@
 
   apps.dunst = {
     iconTheme = "Papirus";
-    font = "ZedMono NFM 10";
+    font = {
+      name = fontName;
+      size = fontSize;
+    };
+  };
+  apps.alacritty = {
+    font = {
+      name = fontName;
+      size = fontSize;
+    };
   };
 
   home.sessionVariables = {
