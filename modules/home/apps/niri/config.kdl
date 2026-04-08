@@ -116,6 +116,11 @@ binds {
   XF86MonBrightnessDown { spawn "xbacklight" "-dec" "5"; }
 }
 
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
 layout {
 	gaps 8
 	center-focused-column "never"
