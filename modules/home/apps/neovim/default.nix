@@ -50,6 +50,8 @@ in
         type = "lua";
         config = builtins.readFile ./nvim/plugins/nvim-tree.lua;
       }
+      indent-blankline-nvim
+      gitsigns-nvim
       {
         plugin = mini-base16;
         type = "lua";
