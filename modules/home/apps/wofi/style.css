@@ -3,15 +3,16 @@
   font-size: @fontSize0@;
 }
 
-window {
-  padding: 2em;
-  border: 2px solid @base0D@;
-  background-color: @base00@;
-  border-radius: 8px;
+#window {
+  background-color: transparent; 
 }
 
 #outer-box {
+  padding: 2em;
+  border: 2px solid @base0D@;
+  background-color: @base00@;
   margin: 1em;
+  border-radius: 8px;
 }
 
 #input {
