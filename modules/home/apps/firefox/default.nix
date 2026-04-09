@@ -27,6 +27,7 @@
 
     profiles.default = {
       isDefault = true;
+      search.force = true;
       settings = {
         "browser.startup.homepage" = "https://danxliu.com/startpage";
         "sidebar.revamp" = true;
