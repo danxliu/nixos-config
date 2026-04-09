@@ -12,13 +12,15 @@ window#waybar {
 
 tooltip {
     font-family: @fontUI@;
-    font-size: @fontSize@;
+    font-size: @fontSize0@px;
+    font-weight: 600;
 }
 
 #window {
     margin: 0.4em 0.6em;
     font-family: @fontUI@;
-    font-size: @fontSize@;
+    font-size: @fontSize0@px;
+    font-weight: 600;
     border-radius: 0.4em;
 }
 
@@ -30,18 +32,21 @@ tooltip {
 #clock {
     margin: 0.4em 0.6em;
     font-family: @fontUI@;
-    font-size: @fontSize@;
+    font-size: @fontSize0@px;
+    font-weight: 600;
     color: @base07@;
 }
 
 #battery {
     margin: 0.4em 0.6em;
     font-family: @fontIcon@;
+    font-weight: 600;
     color: @base0B@;
 }
 #network {
     margin: 0.4em 0.6em;
     font-family: @fontIcon@;
+    font-weight: 600;
     color: @base07@;
 }
 
@@ -79,7 +84,6 @@ window#waybar.empty #window {
 }
 #pulseaudio {
     font-family: @fontIcon@;
-    font-weight: 600;
     margin: 0 0.6em;
     color: @base07@;
 }

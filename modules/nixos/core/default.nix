@@ -45,6 +45,8 @@
     git
     wget
     devenv
+    python315
+    uv
   ];
 
   programs.vim = {

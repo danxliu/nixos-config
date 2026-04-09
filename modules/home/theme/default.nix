@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -9,7 +10,12 @@ let
   fontMonoName = "ZedMono NFM";
   fontUIName = "IBM Plex Sans";
   fontIconName = "Material Design Icon";
-  fontSize = 12;
+  fontSize0 = 12;
+  fontSize1 = 18;
+  fontSize2 = 24;
+  fontSize3 = 32;
+  fontSize4 = 48;
+  fontSize5 = 72;
   replaceText =
     text:
     let
@@ -20,14 +26,24 @@ let
           "fontMono"
           "fontUI"
           "fontIcon"
-          "fontSize"
+          "fontSize0"
+          "fontSize1"
+          "fontSize2"
+          "fontSize3"
+          "fontSize4"
+          "fontSize5"
         ]
       );
       replacements = (map (val: "#${val}") (builtins.attrValues palette)) ++ [
         fontMonoName
         fontUIName
         fontIconName
-        (toString fontSize)
+        (toString fontSize0)
+        (toString fontSize1)
+        (toString fontSize2)
+        (toString fontSize3)
+        (toString fontSize4)
+        (toString fontSize5)
       ];
     in
     builtins.replaceStrings placeholders replacements text;
@@ -42,7 +58,12 @@ in
     inherit fontMonoName;
     inherit fontUIName;
     inherit fontIconName;
-    inherit fontSize;
+    inherit fontSize0;
+    inherit fontSize1;
+    inherit fontSize2;
+    inherit fontSize3;
+    inherit fontSize4;
+    inherit fontSize5;
     inherit wallpaper;
   };
 

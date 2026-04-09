@@ -51,19 +51,19 @@
     iconTheme = "Papirus";
     font = {
       name = theme.fontUIName;
-      size = theme.fontSize;
+      size = theme.fontSize0;
     };
   };
   apps.alacritty = {
     font = {
       name = theme.fontMonoName;
-      size = theme.fontSize;
+      size = theme.fontSize0;
     };
   };
   apps.hyprlock = {
     font = {
       name = theme.fontUIName;
-      size = 72;
+      size = theme.fontSize5;
     };
     wallpaper = theme.wallpaper;
   };
