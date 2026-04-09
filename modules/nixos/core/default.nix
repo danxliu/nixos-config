@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -15,7 +16,10 @@
     "flakes"
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    joypixels.acceptLicense = true;
+  };
 
   networking.networkmanager.enable = true;
   time.timeZone = "America/Los_Angeles";
@@ -26,6 +30,9 @@
     nerd-fonts.iosevka
     material-design-icons
     ibm-plex
+    joypixels
+    noto-fonts-cjk-serif
+    noto-fonts-cjk-sans
   ];
 
   environment.systemPackages = with pkgs; [
