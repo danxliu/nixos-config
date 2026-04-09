@@ -5,6 +5,7 @@
   ...
 }:
 let
+  wallpaper = ./wallpapers/nixos-light.png;
   fontMonoName = "ZedMono NFM";
   fontUIName = "IBM Plex Sans";
   fontIconName = "Material Design Icon";
@@ -42,6 +43,7 @@ in
     inherit fontUIName;
     inherit fontIconName;
     inherit fontSize;
+    inherit wallpaper;
   };
 
   colorScheme = {
