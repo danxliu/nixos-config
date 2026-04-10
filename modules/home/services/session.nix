@@ -8,6 +8,7 @@
     };
 
     Service = {
+      Type = "simple";
       ExecStart = "${pkgs.awww}/bin/awww-daemon";
       ExecStartPost = "${pkgs.awww}/bin/awww img ${../theme/wallpapers/nixos-light.png}";
       Restart = "on-failure";
