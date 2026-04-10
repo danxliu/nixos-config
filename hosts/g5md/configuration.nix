@@ -8,7 +8,14 @@
     ../../modules/nixos/core/default.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.timeout = 10;
+  boot.loader.grub = {
+    enable = true;
+    useOSProber = true;
+    efiSupport = true;
+    device = "nodev";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "g5md";
