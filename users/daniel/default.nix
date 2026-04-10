@@ -98,7 +98,6 @@
     awww
     hyprlock
     thunar
-    xbacklight
     zathura
   ];
 }
