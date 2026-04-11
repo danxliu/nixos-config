@@ -13,4 +13,6 @@
 
   services.libinput.enable = true;
   services.tailscale.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 }

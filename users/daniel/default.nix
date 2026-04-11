@@ -98,7 +98,10 @@
     tree
     awww
     hyprlock
-    thunar
+    pavucontrol
+    alacritty
+    viewnior
+    libreoffice-fresh
     zathura
   ];
 }

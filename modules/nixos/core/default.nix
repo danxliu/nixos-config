@@ -45,9 +45,7 @@
     papirus-icon-theme
     quintom-cursor-theme
 
-    pavucontrol
-    alacritty
-
+    file-roller
     unzip
     git
     wget
@@ -68,6 +66,13 @@
     enable = true;
     enableFishIntegration = true;
   };
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
 
   programs.nix-index-database.comma.enable = true;
   programs.nix-ld.enable = true;
@@ -78,6 +83,6 @@
   };
   programs.npm = {
     enable = true;
-   package = pkgs.nodejs;
+    package = pkgs.nodejs;
   };
 }
