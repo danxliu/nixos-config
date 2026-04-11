@@ -2,7 +2,11 @@
 
 {
   programs.niri.enable = true;
+  programs.xwayland.enable = true;
   services.blueman.enable = true;
+  environment.systemPackages = with pkgs; [
+    xwayland-satellite
+  ];
 
   services.greetd = {
     enable = true;
