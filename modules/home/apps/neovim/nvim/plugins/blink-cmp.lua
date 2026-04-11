@@ -1,4 +1,7 @@
 require("blink.cmp").setup({
+    completion = {
+        accept = { auto_brackets = { enabled = true } }
+    },
     snippets = {
         expand = function(snippet)
             require('luasnip.loaders.from_vscode').lazy_load()

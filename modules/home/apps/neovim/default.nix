@@ -52,7 +52,11 @@ in
       }
       indent-blankline-nvim
       gitsigns-nvim
-      nvim-autopairs
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/nvim-autopairs.lua;
+      }
       {
         plugin = mini-base16;
         type = "lua";
