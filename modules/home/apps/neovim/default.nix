@@ -57,6 +57,7 @@ in
         type = "lua";
         config = builtins.readFile ./nvim/plugins/nvim-autopairs.lua;
       }
+      nvim-ts-autotag
       {
         plugin = mini-base16;
         type = "lua";
