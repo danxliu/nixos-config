@@ -78,6 +78,6 @@
   };
   programs.npm = {
     enable = true;
-    package = pkgs.nodejs;
+   package = pkgs.nodejs;
   };
 }

@@ -90,6 +90,7 @@
     nixd
     marksman
     texlab
+    lua-language-server
 
     gemini-cli
     github-copilot-cli
