@@ -26,6 +26,27 @@
   home.homeDirectory = "/home/daniel";
   home.stateVersion = "25.11";
 
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+    matchBlocks = {
+      "tshome" = {
+        hostname = "100.85.4.120";
+        user = "daniel";
+        port = 2222;
+        identityFile = "~/.ssh/id_rsa";
+      };
+      "home" = {
+        hostname = "192.168.50.233";
+        user = "daniel";
+        port = 2222;
+        identityFile = "~/.ssh/id_rsa";
+      };
+    };
+  };
+
   programs.home-manager.enable = true;
   programs.gh = {
     enable = true;
