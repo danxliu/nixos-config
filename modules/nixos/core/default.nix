@@ -53,6 +53,7 @@
     python315
     uv
     networkmanagerapplet
+    wl-clipboard
   ];
 
   programs.vim = {
