@@ -52,6 +52,7 @@
     devenv
     python315
     uv
+    networkmanagerapplet
   ];
 
   programs.vim = {
