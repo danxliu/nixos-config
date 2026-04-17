@@ -63,6 +63,12 @@
     };
   };
   services.thermald.enable = true;
+  services.undervolt = {
+    enable = true;
+    coreOffset = -50;
+    gpuOffset = -30;
+    analogioOffset = -50;
+  };
 
   system.stateVersion = "25.11";
 }
