@@ -62,6 +62,7 @@
       CPU_MAX_PERF_ON_BAT = 20;
     };
   };
+  services.thermald.enable = true;
 
   system.stateVersion = "25.11";
 }
