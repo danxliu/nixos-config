@@ -113,6 +113,8 @@
     texlab
     lua-language-server
 
+    nvtopPackages.nvidia
+
     gemini-cli
     github-copilot-cli
     ripgrep
