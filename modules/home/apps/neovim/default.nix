@@ -11,6 +11,7 @@
     withPython3 = false;
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
+      bufferline-nvim
       conform-nvim
       luasnip
       nvim-lspconfig
