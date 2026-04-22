@@ -126,5 +126,7 @@
     viewnior
     libreoffice-fresh
     zathura
+    obs-studio
+    mpv
   ];
 }
