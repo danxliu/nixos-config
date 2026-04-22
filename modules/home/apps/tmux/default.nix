@@ -3,6 +3,8 @@
 {
   programs.tmux = {
     enable = true;
+    terminal = "screen-256color";
+    escapeTime = 10;
     mouse = true;
     baseIndex = 1;
     shortcut = "Space";
@@ -10,6 +12,7 @@
 
     extraConfig = ''
       set-option -g allow-rename off
+      set-option -g focus-events on
 
       set -g status-position bottom
       set -g status-justify left
