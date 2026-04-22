@@ -123,7 +123,7 @@
     hyprlock
     pavucontrol
     alacritty
-    viewnior
+    loupe
     libreoffice-fresh
     zathura
     obs-studio
