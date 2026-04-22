@@ -27,6 +27,26 @@
       nvim-ts-autotag
       base16-nvim
     ];
+    extraPackages = with pkgs; [
+      # LSPs
+      clang-tools
+      pyright
+      jdt-language-server
+      typescript-language-server
+      vscode-langservers-extracted
+      rust-analyzer
+      nixd
+      texlab
+      marksman
+      lua-language-server
+      bash-language-server
+
+      # Formatters & Linters
+      nixpkgs-fmt
+      black
+      shellcheck
+      prettierd
+    ];
     initLua = theme.replaceText (builtins.readFile ./nvim/init.lua);
   };
 }

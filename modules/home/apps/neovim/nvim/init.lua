@@ -117,12 +117,6 @@ require("dashboard").setup({
         action = 'enew',
         key = 'n',
       },
-      {
-        desc = 'Update',
-        group = 'Label',
-        action = 'Lazy update',
-        key = 'u',
-      },
     },
     footer = {
       "The one true text editor."
@@ -211,6 +205,15 @@ require("nvim-autopairs").setup()
 
 require("nvim-ts-autotag").setup()
 
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+    if lang then
+      vim.treesitter.start()
+    end
+  end,
+})
+
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 local servers = {
   'clangd',
@@ -220,10 +223,11 @@ local servers = {
   'html',
   'cssls',
   'rust_analyzer',
-  'nil_ls',
+  'nixd',
   'marksman',
   'texlab',
-  'lua_ls'
+  'lua_ls',
+  'bashls'
 }
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {

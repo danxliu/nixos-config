@@ -1,6 +1,5 @@
 {
-  pkgs,
-  config,
+  pkgs, config,
   inputs,
   theme,
   ...
@@ -104,17 +103,8 @@
     tree-sitter
     pstree
     clang-tools
-    pyright
-    jdt-language-server
-    typescript-language-server
-    vscode-langservers-extracted
-    rust-analyzer
-    nil
-    nixd
-    marksman
     texlab
     texliveFull
-    lua-language-server
 
     nvtopPackages.nvidia
 
