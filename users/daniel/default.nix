@@ -128,5 +128,6 @@
     zathura
     obs-studio
     mpv
+    pinta
   ];
 }
