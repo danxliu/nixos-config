@@ -23,7 +23,7 @@
       gitsigns-nvim
       nvim-autopairs
       nvim-ts-autotag
-      mini-base16
+      base16-nvim
     ];
     initLua = theme.replaceText (builtins.readFile ./nvim/init.lua);
   };

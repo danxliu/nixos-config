@@ -48,25 +48,44 @@ vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
+require("base16-colorscheme").setup({
+  base00 = "@base00@",
+  base01 = "@base01@",
+  base02 = "@base02@",
+  base03 = "@base03@",
+  base04 = "@base04@",
+  base05 = "@base05@",
+  base06 = "@base06@",
+  base07 = "@base07@",
+  base08 = "@base08@",
+  base09 = "@base09@",
+  base0A = "@base0A@",
+  base0B = "@base0B@",
+  base0C = "@base0C@",
+  base0D = "@base0D@",
+  base0E = "@base0E@",
+  base0F = "@base0F@"
+})
+
 require("luasnip").config.setup({ enable_autosnippets = true })
 
 require("blink.cmp").setup({
-    completion = {
-        accept = { auto_brackets = { enabled = true } }
-    },
-    snippets = {
-        expand = function(snippet)
-            require('luasnip.loaders.from_vscode').lazy_load()
-            require('luasnip.loaders.from_vscode').lazy_load({
-                paths = '~/.config/nvim/snippets',
-            })
-            require('luasnip').lsp_expand(snippet)
-        end
-    },
-    sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-    fuzzy = { implementation = "lua" }
+  completion = {
+    accept = { auto_brackets = { enabled = true } }
+  },
+  snippets = {
+    expand = function(snippet)
+      require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip.loaders.from_vscode').lazy_load({
+        paths = '~/.config/nvim/snippets',
+      })
+      require('luasnip').lsp_expand(snippet)
+    end
+  },
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+  },
+  fuzzy = { implementation = "lua" }
 })
 
 require("mini.pick").setup()
@@ -74,116 +93,116 @@ require("mini.pick").setup()
 require("nvim-web-devicons").setup()
 
 require("dashboard").setup({
-    theme = 'doom',
-    config = {
-        header = {
-            '',
-            '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ',
-            '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
-            '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ',
-            '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
-            '          ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
-            '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
-            '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
-            ' ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
-            ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ',
-            '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
-            '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
-            '',
-        },
-        center = {
-            {
-                desc = 'New File',
-                group = 'Label',
-                action = 'enew',
-                key = 'n',
-            },
-            {
-                desc = 'Update',
-                group = 'Label',
-                action = 'Lazy update',
-                key = 'u',
-            },
-        },
-        footer = {
-            "The one true text editor."
-        }
+  theme = 'doom',
+  config = {
+    header = {
+      '',
+      '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ',
+      '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
+      '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ',
+      '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
+      '          ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
+      '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
+      '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
+      ' ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
+      ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ',
+      '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
+      '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
+      '',
+    },
+    center = {
+      {
+        desc = 'New File',
+        group = 'Label',
+        action = 'enew',
+        key = 'n',
+      },
+      {
+        desc = 'Update',
+        group = 'Label',
+        action = 'Lazy update',
+        key = 'u',
+      },
+    },
+    footer = {
+      "The one true text editor."
     }
+  }
 })
 
 require("colorizer").setup()
 
 require("lualine").setup({
-    options = {
-        theme = 'base16',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        disabled_filetypes = { 'NvimTree' },
-        sections = {
-            lualine_a = { 'mode' },
-            lualine_b = { 'branch', 'diagnostics' },
-            lualine_c = { 'filename' },
-            lualine_x = { 'encoding' },
-            lualine_y = { 'filetype' },
-            lualine_z = { 'location' }
-        },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { 'filename' },
-            lualine_x = { 'location' },
-            lualine_y = {},
-            lualine_z = {}
-        },
-    }
+  options = {
+    theme = 'base16',
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = { 'NvimTree' },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch', 'diagnostics' },
+      lualine_c = { 'filename' },
+      lualine_x = { 'encoding' },
+      lualine_y = { 'filetype' },
+      lualine_z = { 'location' }
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { 'filename' },
+      lualine_x = { 'location' },
+      lualine_y = {},
+      lualine_z = {}
+    },
+  }
 });
 
 require("nvim-tree").setup({
-    renderer = {
-        icons = {
-            glyphs = {
-                default = "",
-                symlink = "",
-                folder = {
-                    arrow_open = "",
-                    arrow_closed = "",
-                    default = "",
-                    open = "",
-                    empty = "",
-                    empty_open = "",
-                    symlink = "",
-                    symlink_open = "",
-                },
-                git = {
-                    unstaged = "",
-                    staged = "",
-                    unmerged = "",
-                    renamed = "󰛿",
-                    untracked = "",
-                    deleted = "",
-                    ignored = "󱥸",
-                },
-            },
+  renderer = {
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_open = "",
+          arrow_closed = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
         },
+        git = {
+          unstaged = "",
+          staged = "",
+          unmerged = "",
+          renamed = "󰛿",
+          untracked = "",
+          deleted = "",
+          ignored = "󱥸",
+        },
+      },
     },
-    diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-        icons = {
-            info = "",
-            warning = "",
-            error = "󰅙",
-        },
-    }
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+    icons = {
+      info = "",
+      warning = "",
+      error = "󰅙",
+    },
+  }
 })
 
 require("ibl").setup({
-    exclude = {
-        filetypes = {
-            "NvimTree",
-            "dashboard",
-        }
+  exclude = {
+    filetypes = {
+      "NvimTree",
+      "dashboard",
     }
+  }
 })
 
 require("gitsigns").setup()
@@ -192,45 +211,24 @@ require("nvim-autopairs").setup()
 
 require("nvim-ts-autotag").setup()
 
-require("mini.base16").setup({
-    palette = {
-        base00 = "@base00@",
-        base01 = "@base01@",
-        base02 = "@base02@",
-        base03 = "@base03@",
-        base04 = "@base04@",
-        base05 = "@base05@",
-        base06 = "@base06@",
-        base07 = "@base07@",
-        base08 = "@base08@",
-        base09 = "@base09@",
-        base0A = "@base0A@",
-        base0B = "@base0B@",
-        base0C = "@base0C@",
-        base0D = "@base0D@",
-        base0E = "@base0E@",
-        base0F = "@base0F@"
-    }
-})
-
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 local servers = {
-    'clangd',
-    'pyright',
-    'jdtls',
-    'ts_ls',
-    'html',
-    'cssls',
-    'rust_analyzer',
-    'nil_ls',
-    'marksman',
-    'texlab',
-    'lua_ls'
+  'clangd',
+  'pyright',
+  'jdtls',
+  'ts_ls',
+  'html',
+  'cssls',
+  'rust_analyzer',
+  'nil_ls',
+  'marksman',
+  'texlab',
+  'lua_ls'
 }
 for _, lsp in ipairs(servers) do
-    vim.lsp.config(lsp, {
-        capabilities = capabilities,
-        autostart = true,
-    })
-    vim.lsp.enable(lsp)
+  vim.lsp.config(lsp, {
+    capabilities = capabilities,
+    autostart = true,
+  })
+  vim.lsp.enable(lsp)
 end
