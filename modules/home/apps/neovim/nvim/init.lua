@@ -44,7 +44,13 @@ vim.keymap.set("n", "<leader>f", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>g", ":Pick grep_live<CR>")
 
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>fm", function()
+  require("conform").format({
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 500
+  })
+end)
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
@@ -86,6 +92,22 @@ require("blink.cmp").setup({
     default = { 'lsp', 'path', 'snippets', 'buffer' },
   },
   fuzzy = { implementation = "lua" }
+})
+
+require("conform").setup({
+  formatters_by_ft = {
+    javascript = { "prettierd" },
+    typescript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    css = { "prettierd" },
+    html = { "prettierd" },
+    json = { "prettierd" },
+    markdown = { "prettierd" },
+    lua = { "stylua" },
+    sh = { "shfmt" },
+    python = { "ruff_fix", "ruff_format", "black" }
+  }
 })
 
 require("mini.pick").setup()
@@ -227,7 +249,12 @@ local servers = {
   'marksman',
   'texlab',
   'lua_ls',
-  'bashls'
+  'bashls',
+  'yamlls',
+  'svelte',
+  'tailwindcss',
+  'harper_ls',
+  'emmet_language_server'
 }
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {

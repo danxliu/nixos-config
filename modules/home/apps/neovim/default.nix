@@ -11,6 +11,7 @@
     withPython3 = false;
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
+      conform-nvim
       luasnip
       nvim-lspconfig
       blink-cmp
@@ -40,12 +41,20 @@
       marksman
       lua-language-server
       bash-language-server
+      yaml-language-server
+      svelte-language-server
+      tailwindcss-language-server
+      emmet-language-server
+      harper
 
       # Formatters & Linters
-      nixpkgs-fmt
+      nixfmt
       black
       shellcheck
       prettierd
+      stylua
+      shfmt
+      ruff
     ];
     initLua = theme.replaceText (builtins.readFile ./nvim/init.lua);
   };
