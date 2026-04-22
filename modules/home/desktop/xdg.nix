@@ -1,9 +1,11 @@
 {
-  config, theme, ...
+  theme,
+  ...
 }:
 let
   niriTemplate = builtins.readFile ../apps/niri/config.kdl;
-in {
+in
+{
   xdg = {
     configFile = {
       "niri/config.kdl".text = theme.replaceText niriTemplate;
@@ -19,6 +21,26 @@ in {
         "x-scheme-handler/https" = "firefox.desktop";
         "x-scheme-handler/about" = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
+        "inode/directory" = "thunar.desktop";
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
+        "video/webm" = "mpv.desktop";
+        "video/quicktime" = "mpv.desktop";
+        "video/x-msvideo" = "mpv.desktop";
+        "application/pdf" = "org.pwmt.zathura.desktop";
+        "image/jpeg" = "viewnior.desktop";
+        "image/png" = "viewnior.desktop";
+        "image/gif" = "viewnior.desktop";
+        "image/webp" = "viewnior.desktop";
+        "image/svg+xml" = "viewnior.desktop";
+        "image/bmp" = "viewnior.desktop";
+        "image/tiff" = "viewnior.desktop";
+        "application/zip" = "org.gnome.FileRoller.desktop";
+        "application/rar" = "org.gnome.FileRoller.desktop";
+        "application/7z" = "org.gnome.FileRoller.desktop";
+        "application/x-tar" = "org.gnome.FileRoller.desktop";
+        "application/x-bzip2" = "org.gnome.FileRoller.desktop";
+        "application/x-gzip" = "org.gnome.FileRoller.desktop";
       };
     };
   };
