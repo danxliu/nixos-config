@@ -101,6 +101,8 @@
     vesktop
     trayscale
 
+    tree-sitter
+    pstree
     clang-tools
     pyright
     jdt-language-server
@@ -111,6 +113,7 @@
     nixd
     marksman
     texlab
+    texliveFull
     lua-language-server
 
     nvtopPackages.nvidia
@@ -119,6 +122,7 @@
     github-copilot-cli
     ripgrep
     tree
+    xdotool
     awww
     hyprlock
     pavucontrol
