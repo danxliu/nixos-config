@@ -207,10 +207,10 @@ require("nvim-ts-autotag").setup()
 
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
-    local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
-    if lang then
-      vim.treesitter.start()
+    if vim.bo.buftype ~= "" then
+      return
     end
+    pcall(vim.treesitter.start)
   end,
 })
 

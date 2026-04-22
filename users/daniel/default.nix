@@ -102,8 +102,6 @@
 
     tree-sitter
     pstree
-    clang-tools
-    texlab
     texliveFull
 
     nvtopPackages.nvidia
