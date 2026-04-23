@@ -21,6 +21,7 @@
       dashboard-nvim
       nvim-colorizer-lua
       vimtex
+      markview-nvim
       lualine-nvim
       nvim-tree-lua
       indent-blankline-nvim
