@@ -92,10 +92,19 @@
     VISUAL = "nvim";
   };
 
+  fonts.fontconfig.enable = true;
+
   programs.htop.enable = true;
   programs.obsidian.enable = true;
 
   home.packages = with pkgs; [
+    nerd-fonts.zed-mono
+    nerd-fonts.iosevka
+    material-design-icons
+    ibm-plex
+    noto-fonts-cjk-serif
+    noto-fonts-cjk-sans
+
     vesktop
     trayscale
 
