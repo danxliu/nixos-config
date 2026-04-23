@@ -38,6 +38,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
+          backupFileExtension = "bak";
           extraSpecialArgs = { inherit inputs; };
           sharedModules = [
             inputs.nix-index-database.homeModules.nix-index
@@ -82,6 +83,7 @@
           modules = [
             (./users + "/${user}/default.nix")
             inputs.nix-index-database.homeModules.nix-index
+            { home.backupFileExtension = "bak"; }
           ];
         };
     in
