@@ -67,8 +67,26 @@
             homeManagerModule
           ];
         };
+
+      mkHome =
+        user:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+            overlays = [ nur.overlays.default ];
+          };
+          extraSpecialArgs = {
+            inherit inputs nix-colors;
+          };
+          modules = [
+            (./users + "/${user}/default.nix")
+            inputs.nix-index-database.homeModules.nix-index
+          ];
+        };
     in
     {
       nixosConfigurations = lib.genAttrs hosts mkHost;
+      homeConfigurations = lib.genAttrs users mkHome;
     };
 }
