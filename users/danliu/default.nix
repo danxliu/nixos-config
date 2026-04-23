@@ -20,8 +20,8 @@
     ../../modules/home/desktop/xdg.nix
     ../../modules/home/services/session.nix
   ];
-  home.username = "daniel";
-  home.homeDirectory = "/home/daniel";
+  home.username = "danliu";
+  home.homeDirectory = "/home/d/da/danliu";
   home.stateVersion = "25.11";
 
   programs.ssh = {
