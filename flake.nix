@@ -83,7 +83,6 @@
           modules = [
             (./users + "/${user}/default.nix")
             inputs.nix-index-database.homeModules.nix-index
-            { home.backupFileExtension = "bak"; }
           ];
         };
     in
