@@ -32,8 +32,6 @@
         getSubDirs ./users
       );
 
-      homeUsers = lib.genAttrs users (user: import (./users + "/${user}/default.nix"));
-
       homeManagerModule = {
         home-manager = {
           useGlobalPkgs = true;
@@ -43,7 +41,6 @@
           sharedModules = [
             inputs.nix-index-database.homeModules.nix-index
           ];
-          users = homeUsers;
         };
       };
 

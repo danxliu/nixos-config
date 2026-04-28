@@ -107,6 +107,7 @@
 
     gemini-cli
     github-copilot-cli
+    poppler-utils
     ripgrep
     tree
     xdotool
