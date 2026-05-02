@@ -3,7 +3,7 @@
 {
   users.users.daniel = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+    extraGroups = [ "wheel" "video" "docker" ];
     shell = pkgs.fish;
   };
 

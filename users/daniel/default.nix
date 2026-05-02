@@ -121,5 +121,6 @@
     obs-studio
     mpv
     pinta
+    docker
   ];
 }
