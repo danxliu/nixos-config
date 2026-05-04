@@ -54,6 +54,7 @@
     uv
     networkmanagerapplet
     wl-clipboard
+    lm_sensors
   ];
 
   programs.vim = {
