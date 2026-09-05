@@ -10,14 +10,13 @@
     models = {
       providers = {
         openrouter = {
-          apiKey = "!cat ${config.age.secrets."openrouter-key".path}";
+          apiKey = "!sh -c '. ${config.age.secrets."openrouter-key".path} && echo $OPENROUTER_API_KEY'";
         };
       };
     };
     settings = {
       defaultModel = "z-ai/glm-5.3-flash";
       defaultProvider = "openrouter";
-      defaultThinkingLevel = "high";
       packages = [
         "npm:@narumitw/pi-btw"
         "npm:@narumitw/pi-plan-mode"
