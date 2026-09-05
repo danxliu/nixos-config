@@ -7,7 +7,7 @@
       image = "ghcr.io/ggml-org/llama.cpp:server-cuda";
       autoStart = true;
       volumes = [
-        "/var/lib/llama-cpp:/root/.cache/llama.cpp"
+        "/var/lib/llama-cpp:/root/.cache/huggingface"
       ];
 
       cmd = [
