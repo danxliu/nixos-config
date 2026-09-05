@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/core/server.nix
     ../../modules/nixos/services/docker.nix
+    ../../modules/nixos/services/llama-cpp.nix
   ];
 
   boot.loader.systemd-boot.enable = false;
