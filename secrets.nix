@@ -3,4 +3,6 @@ let
   daniel = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGNi7bXmqv79tcy9wOesO6IvwmvdoT+vZVNoXJ0BanNu";
 in
 {
+  "secrets/openrouter-key.age".publicKeys = [ daniel argy ];
+  "secrets/opencode-key.age".publicKeys = [ daniel argy ];
 }

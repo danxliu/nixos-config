@@ -1,0 +1,47 @@
+{ config, pkgs, ... }:
+
+{
+  age.secrets."openrouter-key" = {
+    file = ../../../../secrets/openrouter-key.age;
+  };
+  age.secrets."opencode-key" = {
+    file = ../../../../secrets/opencode-key.age;
+  };
+
+  programs.pi-coding-agent = {
+    enable = true;
+    models = {
+      providers = {
+        openrouter = {
+          apiKey = "!cat ${config.age.secrets."openrouter-key".path}";
+        };
+        "opencode-go" = {
+          apiKey = "!cat ${config.age.secrets."opencode-key".path}";
+        };
+      };
+    };
+    settings = {
+      defaultModel = "z-ai/glm-5.3-flash";
+      defaultProvider = "openrouter";
+      defaultThinkingLevel = "high";
+      packages = [
+        "npm:@narumitw/pi-btw"
+        "npm:@narumitw/pi-plan-mode"
+        "npm:cc-safety-net"
+        "npm:pi-subagents"
+        "npm:pi-web-access"
+      ];
+    };
+    extraPackages = [ pkgs.nodejs pkgs.bun ];
+  };
+
+  home.file = let
+    cfgDir = config.programs.pi-coding-agent.configDir;
+  in {
+    "${cfgDir}/APPEND_SYSTEM.md".source = ./APPEND_SYSTEM.md;
+    "${cfgDir}/skills/grill/SKILL.md".source = ./grill/SKILL.md;
+    "${cfgDir}/skills/how/SKILL.md".source = ./how/SKILL.md;
+    "${cfgDir}/skills/review/SKILL.md".source = ./review/SKILL.md;
+    "${cfgDir}/skills/why/SKILL.md".source = ./why/SKILL.md;
+  };
+}

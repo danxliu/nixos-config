@@ -20,6 +20,7 @@
     ../../modules/home/apps/wofi
     ../../modules/home/apps/zathura
     ../../modules/home/apps/zed
+    ../../modules/home/apps/pi
     ../../modules/home/desktop/xdg.nix
     ../../modules/home/services/cliphist.nix
     ../../modules/home/services/session.nix
@@ -148,7 +149,6 @@
     kicad
     openssl
 
-    pi-coding-agent
     gws
 
     tree-sitter

@@ -15,6 +15,7 @@
       set-option -g allow-rename off
       set-option -g focus-events on
       set-option -g extended-keys on
+      set -g extended-keys-format csi-u
 
       set -g status-position bottom
       set -g status-justify left
