@@ -11,7 +11,7 @@
       ];
 
       cmd = [
-        "-hf" "unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_M"
+        "-hf" "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M"
         "-c" "65536"
         "-ctk" "q8_0"
         "-ctv" "q8_0"
