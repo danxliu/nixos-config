@@ -13,7 +13,23 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/core/default.nix
     ../../modules/nixos/services/docker.nix
+    inputs.hermes-agent.nixosModules.default
   ];
+
+  age.secrets.openrouter-key.file = ../../secrets/openrouter-key.age;
+
+  services.hermes-agent = {
+    enable = true;
+    addToSystemPackages = true;
+    settings = {
+      model = {
+        provider = "custom";
+        base_url = "http://acro:8080/v1/";
+        default = "llama.cpp";
+      };
+    };
+    environmentFiles = [ config.age.secrets.openrouter-key.path ];
+  };
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.timeout = 10;

@@ -4,9 +4,6 @@
   age.secrets."openrouter-key" = {
     file = ../../../../secrets/openrouter-key.age;
   };
-  age.secrets."opencode-key" = {
-    file = ../../../../secrets/opencode-key.age;
-  };
 
   programs.pi-coding-agent = {
     enable = true;
@@ -14,9 +11,6 @@
       providers = {
         openrouter = {
           apiKey = "!cat ${config.age.secrets."openrouter-key".path}";
-        };
-        "opencode-go" = {
-          apiKey = "!cat ${config.age.secrets."opencode-key".path}";
         };
       };
     };

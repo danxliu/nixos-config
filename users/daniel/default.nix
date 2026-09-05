@@ -151,6 +151,9 @@
 
     gws
 
+    inputs.hermes-agent.packages.x86_64-linux.desktop
+    ragenix
+
     tree-sitter
     pstree
     texliveFull
